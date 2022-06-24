@@ -1,10 +1,11 @@
 const Run = require("run-sdk");
+require("dotenv").config();
 const fs = require("fs");
 const fetch = require("node-fetch");
 const { uuid } = require("uuidv4");
 
-const purse = "L13VWD6yZVrs3RRWH41g8faicNxzWrzPChaD5syiiH2X9JDgkJQh";
-const owner = "L5VrBXKwDNRzq4iG5S5cQ3PdAM8xFmqKYhVFw2EDSnsXTwuYPoP2";
+const purse = process.env.PURSE;
+const owner = process.env.OWNER;
 const run = new Run({
 	owner: owner,
 	purse: purse,
@@ -191,7 +192,6 @@ const ticketMintInstance = async (newOwner) => {
 // ticketMintInstance();
 
 //example ticket txid 3aac57f54d222cc2bb21934a0a13e99f7f3b4f96e8c9d78da9fc7984841f0a9c
-
 
 //redeem ticketmint ticket
 const redeemTicket = async (ticketToRedeem) => {
