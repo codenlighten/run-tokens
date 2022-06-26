@@ -152,7 +152,6 @@ const ticketMintInstance = async (newOwner) => {
 	const image = await Run.extra.B.load(
 		"0ab87e4aa3b1af9b63e2f1a9acdfb89c845abf4f30e1af0df402b7f7e565ef6e"
 	);
-	// "cf6e63e8d76c8a36dd1b5d54ce0799e952f98524e8bc1bd244b5548c60756794";
 	//use getaddy function to return address
 
 	let address = (newOwner = undefined ? run.owner.address : newOwner); //getaddy function is below
@@ -183,17 +182,17 @@ const ticketMintInstance = async (newOwner) => {
 	const t = await tx.publish();
 	//and return our TXID
 	console.log("Your Ticket TXID: ", { t });
+	//we check if new owner specified and send to them if so
 	if (newOwner) send(address, t);
 	return t;
 };
 //single ticket minting function
-//here is where we mint a single ticket instance...
 
 // ticketMintInstance();
 
 //example ticket txid 3aac57f54d222cc2bb21934a0a13e99f7f3b4f96e8c9d78da9fc7984841f0a9c
 
-//redeem ticketmint ticket
+//redeem ticketmint ticket (enter event)
 const redeemTicket = async (ticketToRedeem) => {
 	const ticket = await run.load(`${ticketToRedeem}_o2`);
 	await ticket.sync;
